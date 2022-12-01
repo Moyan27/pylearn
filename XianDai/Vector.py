@@ -86,3 +86,7 @@ class Vector():
     def normalize(self):
         #return Vector([e/self.norm() for e in self])
         return Vector(self._values)/self.norm()
+    #向量的点乘
+    def dot(self,another):
+        return sum(a*b for a,b in zip(self,another))
+    
