@@ -68,7 +68,10 @@ class Matrix:
     @classmethod
     def identity(cls,n):
         #构造n行n列的单位矩阵
-        return cls.zero(n,n).map(lambda i,j:1 if i==j else 0)
+        m=cls.zero(n,n)
+        for i in range(n):
+            m[i,i]=1
+        return m
     def dot(self,another):
         #判断是矩阵还是向量
         if isinstance(another,Vector):
@@ -83,4 +86,8 @@ class Matrix:
     #矩阵的转置
     def transpose(self):
         return Matrix([[e for e in self.col_vector(i)] for i in range(self.col_num())])
-    #
+    
+    #矩阵的逆矩阵
+    def inverse(self):
+        assert self.row_num()==self.col_num(),"矩阵的行数和列数不同"
+        
