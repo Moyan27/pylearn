@@ -90,4 +90,6 @@ class Matrix:
     #矩阵的逆矩阵
     def inverse(self):
         assert self.row_num()==self.col_num(),"矩阵的行数和列数不同"
-        
+        #计算矩阵的行列
+        n=self.row_num()
+         
