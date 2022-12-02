@@ -1,11 +1,27 @@
 from XianDai.Vector import Vector
 from XianDai.Matrix import Matrix
 import numpy as np
+import matplotlib.pyplot as plt
+import math
 
 if __name__=="__main__":
-    matrix1=Matrix([[1,2,7],[3,4,9]])
-    matrix2=Matrix([[2,3,4],[4,5,7],[3,6,2]])
-    vec1=Vector([3,4,6])
-    vec2=Vector([4,5,6])
-    matrix3=Matrix.identity(3)
-    print(matrix3.shape)
+    points=[[0,0],[0,5],[3,5],[3,4],[1,4],[1,3],[2,3],[2,2],[1,2],[1,0],[0,0]]
+    x=[point[0] for point in points]
+    y=[point[1] for point in points]
+    
+    plt.figure(figsize=(5,5))           
+    plt.xlim(-10,10)
+    plt.ylim(-10,10)
+
+    plt.plot(x,y)
+
+    P=Matrix(points)
+
+    #T=Matrix([[2,0],[0,1.5]])
+    theta=math.pi/3
+    T=Matrix([[math.cos(theta),math.sin(theta)],[-1*math.sin(theta),math.cos(theta)]])
+
+    P2=T.dot(P.transpose())
+    plt.plot([P2.col_vector(i)[0] for i in range(P2.col_num())],
+              [P2.col_vector(i)[1] for i in range(P2.col_num())])
+    plt.show()

@@ -80,4 +80,7 @@ class Matrix:
             #矩阵和矩阵的乘法
             return Matrix([[self.row_vector(i).dot(another.col_vector(j)) for j in range(another.col_num())] for i in range(self.row_num())])
         
-    
+    #矩阵的转置
+    def transpose(self):
+        return Matrix([[e for e in self.col_vector(i)] for i in range(self.col_num())])
+    #
