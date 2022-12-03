@@ -92,4 +92,14 @@ class Matrix:
         assert self.row_num()==self.col_num(),"矩阵的行数和列数不同"
         #计算矩阵的行列
         n=self.row_num()
-         
+        #构造单位矩阵,并计算行列式的值,如果为0,则矩阵无法逆矩,返回None,否则返回逆矩阵,其中矩阵的行列互换,列变行,行变列,行列式的值也变换了,这样就可以计算出
+        inverse_matrix=Matrix.identity(n)
+        det=self.determinant()
+        if det==0:
+            return None
+        else:
+            for i in range(n):
+                for j in range(n):
+                    inverse_matrix[j,i]=self.cofactor(i,j)/det
+            return inverse_matrix.transpose ()
+        
