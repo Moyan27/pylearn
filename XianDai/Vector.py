@@ -1,5 +1,5 @@
 import math
-from ._global import EPSILON
+from ._global import *
 class Vector():
     def __init__(self,lst):
         self._values = list(lst)
@@ -60,7 +60,7 @@ class Vector():
         """
         return Vector([e*k for e in self])
     def __truediv__(self,k):
-        if self.norm()<EPSILON:
+        if is_zero(self.norm()):
             return "错误，分母不能为零"
         else:
             return (1/k)*self
