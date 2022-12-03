@@ -89,4 +89,8 @@ class Vector():
     #向量的点乘
     def dot(self,another):
         return sum(a*b for a,b in zip(self,another))
+
+    #返回副本向量
+    def underlying_list(self):
+        return self._values[:]
     
