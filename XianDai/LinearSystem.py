@@ -64,13 +64,13 @@ class LinearSystem():
             print(" ".join(str(self.Ab[i][j]) for j in range(self._n)),end=""),
             print("|",self.Ab[i][-1])
 
-#矩阵求逆
-def inverse(A):
-    if A.row_num()!=A.col_num():
-        return None
-    n=A.row_num()
-    ls=LinearSystem(A,Matrix.identity(n))
-    if not ls.gauss_jordan_elimination():
-        return None
-    invA=[[row[i] for i in range(n,2*n)] for row in ls.Ab]
-    return Matrix(invA)
+    #矩阵求逆
+    def inverse(A):
+        if A.row_num()!=A.col_num():
+            return None
+        n=A.row_num()
+        ls=LinearSystem(A,Matrix.identity(n))
+        if not ls.gauss_jordan_elimination():
+            return None
+        invA=[[row[i] for i in range(n,2*n)] for row in ls.Ab]
+        return Matrix(invA)
